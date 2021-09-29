@@ -1,7 +1,4 @@
 package day7;
-// В классе Самолет реализовать статический метод compareAirplanes, который в качестве аргументов
-// принимает два объекта класса Airplane (два самолета) и выводит сообщение в консоль о том,
-// какой из самолетов длиннее.
 public class Task2 {
     public static void main(String[] args) {
         Airplane airplane1 = new Airplane("Boing",2000,67,75000);
