@@ -36,7 +36,7 @@ public class Task1 {
             System.out.println("Исходный файл пуст");
         }
         catch (MyException2 e) {
-            System.out.println(" "); // не дает сделать commit с пустым блоком
+            System.out.println("  "); // не дает сделать commit с пустым блоком
         } catch (IOException e) {
             e.printStackTrace();
         }
