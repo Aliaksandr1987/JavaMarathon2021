@@ -4,6 +4,14 @@ package day19.task3;
  * @author Neil Alishev
  */
 class Point {
+    @Override
+    public String toString() {
+        return "Point{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
+
     private final int x;
     private final int y;
 
