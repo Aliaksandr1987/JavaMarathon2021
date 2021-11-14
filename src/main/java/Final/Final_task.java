@@ -456,6 +456,7 @@ public class Final_task {
                 if (searchShipCell(field, x, y)) {
                     field[x][y] = cell3.toString();
                     fieldForAnotherPlayer[x][y] = cell3.toString();
+                    ZoneShip_1(x,y,fieldForAnotherPlayer);
                     System.out.println("Попадание!");
                     playingFieldForAnotherPlayer.print();
                     System.out.println("Введите координаты для удара по полю соперника (формат x1,y1)");
