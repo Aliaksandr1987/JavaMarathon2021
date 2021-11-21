@@ -1,8 +1,6 @@
 package Final;
 
-import java.util.InputMismatchException;
-import java.util.Random;
-import java.util.Scanner;
+import java.util.*;
 
 public class Final_task {
     public static void main(String[] args){
@@ -25,9 +23,15 @@ public class Final_task {
         System.out.println("После ввода координат корабля нажмите  клавишу Enter");
         playingField1.print();
         addShips4(field1,playingField1);
-        addShips3(field1,playingField1);
-        addShips2(field1,playingField1);
-        addShips1(field1,playingField1);
+        addShips3_1(field1,playingField1);
+        addShips3_2(field1,playingField1);
+        addShips2_1(field1,playingField1);
+        addShips2_2(field1,playingField1);
+        addShips2_3(field1,playingField1);
+        addShips1_1(field1,playingField1);
+        addShips1_2(field1,playingField1);
+        addShips1_3(field1,playingField1);
+        addShips1_4(field1,playingField1);
 
 
         clearScreen();
@@ -38,9 +42,15 @@ public class Final_task {
         System.out.println("После ввода координат корабля нажмите  клавишу Enter");
         playingField2.print();
         addShips4(field2,playingField2);
-        addShips3(field2,playingField2);
-        addShips2(field2,playingField2);
-        addShips1(field2,playingField2);
+        addShips3_1(field2,playingField2);
+        addShips3_2(field2,playingField2);
+        addShips2_1(field2,playingField2);
+        addShips2_2(field2,playingField2);
+        addShips2_3(field2,playingField2);
+        addShips1_1(field2,playingField2);
+        addShips1_2(field2,playingField2);
+        addShips1_3(field2,playingField2);
+        addShips1_4(field2,playingField2);
 
 
         clearScreen();
@@ -202,25 +212,38 @@ public class Final_task {
 
             System.out.println("Введи координаты 4-х палубного корабля (формат x1,y1;x2,y2;x3,y3;x4,y4)");
             Scanner scanner = new Scanner(System.in);
-            scanner.useDelimiter("[,;\"\\s–]+");
-            int x14 = scanner.nextInt();
-            int y14 = scanner.nextInt();
-            int x24 = scanner.nextInt();
-            int y24 = scanner.nextInt();
-            int x34 = scanner.nextInt();
-            int y34 = scanner.nextInt();
-            int x44 = scanner.nextInt();
-            int y44 = scanner.nextInt();
-            Ship_4 ship_4 = new Ship_4(x14, y14, x24, y24, x34, y34, x44, y44, playingField);
+            String string = scanner.nextLine();
+            String[] numbersString = string.split("[,;]");
+            int[] xy = new int[8];
+            int i = 0;
+            for(String h:numbersString){
+                xy[i] = Integer.parseInt(h);
+                if (xy[i] >10 || xy[i] <1){
+                    throw new ArrayIndexOutOfBoundsException();
+                }
+                i++;
+            }
+
+            int x14 = xy[0];
+            int y14 = xy[1];
+            int x24 = xy[2];
+            int y24 = xy[3];
+            int x34 = xy[4];
+            int y34 = xy[5];
+            int x44 = xy[6];
+            int y44 = xy[7];
+
             field[x14][y14] = cell1.toString();
             field[x24][y24] = cell1.toString();
             field[x34][y34] = cell1.toString();
             field[x44][y44] = cell1.toString();
+
+            Ship_4 ship_4 = new Ship_4(x14, y14, x24, y24, x34, y34, x44, y44, playingField,field);
             ZoneShip_4(x14, y14, x24, y24, x34, y34, x44, y44, field);
             playingField.print();
 
-        } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
-            System.out.println("Вы ввели некорректные координаты ( введите числа от 1 до 10 включительно");
+        } catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
+            System.out.println("Вы ввели некорректные координаты");
             addShips4(field, playingField);
         } catch (ValidShip n) {
             System.out.println("Не валидный корабль. Ячейки должны идти последовательно по вертикали или горизонтали");
@@ -228,133 +251,263 @@ public class Final_task {
         } catch (EmptyCell s) {
             System.out.println("Вы разместили ячейку корабля на занятой клетке ");
             addShips4(field, playingField);
+        } catch (NumberFormatException y){
+            System.out.println("Координаты должны быть разделены знаками , или ;");
+            addShips4(field, playingField);
         }
+
     }
 
-    public static void addShips3(String[][] field,PlayingField playingField) {
+    public static void addShips3_1(String[][] field, PlayingField playingField) {
         Cell cell1 = Cell.SHIP_CELL;
         Cell cell2 = Cell.ZONE_SHIP_CELL;
         try {
 
             System.out.println("Введи координаты первого 3-х палубного корабля (формат x1,y1;x2,y2;x3,y3)");
             Scanner scanner1 = new Scanner(System.in);
-            scanner1.useDelimiter("[.,:;\"\\s–]+");
-            int x13 = scanner1.nextInt();
-            int y13 = scanner1.nextInt();
-            int x23 = scanner1.nextInt();
-            int y23 = scanner1.nextInt();
-            int x33 = scanner1.nextInt();
-            int y33 = scanner1.nextInt();
+            String string = scanner1.nextLine();
+            String[] numbersString = string.split("[,;]");
+            int[] xy = new int[6];
+            int i = 0;
+            for(String h:numbersString){
+                xy[i] = Integer.parseInt(h);
+                if (xy[i] >10 || xy[i] <1){
+                    throw new ArrayIndexOutOfBoundsException();
+                }
+                i++;
+            }
+
+            int x13 = xy[0];
+            int y13 = xy[1];
+            int x23 = xy[2];
+            int y23 = xy[3];
+            int x33 = xy[4];
+            int y33 = xy[5];
             if (field[x13][y13].equals(cell2.toString()) || field[x23][y23].equals(cell2.toString()) || field[x33][y33].equals(cell2.toString())) {
                 throw new ShipZone();
             }
-            Ship_3 ship_3_1 = new Ship_3(x13, y13, x23, y23, x33, y33, playingField);
+            Ship_3 ship_3_1 = new Ship_3(x13, y13, x23, y23, x33, y33, playingField,field);
             field[x13][y13] = cell1.toString();
             field[x23][y23] = cell1.toString();
             field[x33][y33] = cell1.toString();
             ZoneShip_3(x13, y13, x23, y23, x33, y33, field);
             playingField.print();
+        } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
+            System.out.println("Вы ввели некорректные координаты");
+            addShips3_1(field,playingField);
 
+        } catch (ValidShip n) {
+            System.out.println("Не валидный корабль. Ячейки должны идти последовательно по вертикали или горизонтали");
+            addShips3_1(field,playingField);
+        } catch (EmptyCell s) {
+            System.out.println("Вы разместили ячейку корабля на занятой клетке ");
+            addShips3_1(field,playingField);
+        } catch (ShipZone shipZone) {
+            System.out.println("Размещаемый корабль не должен касаться других кораблей сторонами и углами");
+            addShips3_1(field,playingField);
+        }catch (NumberFormatException y){
+            System.out.println("Координаты должны быть разделены знаками , или ;");
+            addShips3_1(field, playingField);
+        }
+    }
+
+            public static void addShips3_2(String[][] field, PlayingField playingField) {
+                Cell cell1 = Cell.SHIP_CELL;
+                Cell cell2 = Cell.ZONE_SHIP_CELL;
+                try {
             System.out.println("Введи координаты второго 3-х палубного корабля (формат x1,y1;x2,y2;x3,y3)");
             Scanner scanner2 = new Scanner(System.in);
-            scanner2.useDelimiter("[.,:;\"\\s–]+");
-            int x131 = scanner2.nextInt();
-            int y131 = scanner2.nextInt();
-            int x231 = scanner2.nextInt();
-            int y231 = scanner2.nextInt();
-            int x331 = scanner2.nextInt();
-            int y331 = scanner2.nextInt();
+                    String string = scanner2.nextLine();
+                    String[] numbersString = string.split("[,;]");
+                    int[] xy = new int[6];
+                    int i = 0;
+                    for(String h:numbersString){
+                        xy[i] = Integer.parseInt(h);
+                        if (xy[i] >10 || xy[i] <1){
+                            throw new ArrayIndexOutOfBoundsException();
+                        }
+                        i++;
+                    }
+
+                    int x131 = xy[0];
+                    int y131 = xy[1];
+                    int x231 = xy[2];
+                    int y231 = xy[3];
+                    int x331 = xy[4];
+                    int y331 = xy[5];
             if (field[x131][y131].equals(cell2.toString()) || field[x231][y231].equals(cell2.toString()) || field[x331][y331].equals(cell2.toString())) {
                 throw new ShipZone();
             }
-            Ship_3 ship_3_2 = new Ship_3(x131, y131, x231, y231, x331, y331, playingField);
+            Ship_3 ship_3_2 = new Ship_3(x131, y131, x231, y231, x331, y331, playingField,field);
             field[x131][y131] = cell1.toString();
             field[x231][y231] = cell1.toString();
             field[x331][y331] = cell1.toString();
             ZoneShip_3(x131, y131, x231, y231, x331, y331, field);
             playingField.print();
         } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
-            System.out.println("Вы ввели некорректные координаты ( введите числа от 1 до 10 включительно");
-            addShips3(field,playingField);
+            System.out.println("Вы ввели некорректные координаты");
+            addShips3_2(field,playingField);
 
         } catch (ValidShip n) {
             System.out.println("Не валидный корабль. Ячейки должны идти последовательно по вертикали или горизонтали");
-            addShips3(field,playingField);
+            addShips3_2(field,playingField);
         } catch (EmptyCell s) {
             System.out.println("Вы разместили ячейку корабля на занятой клетке ");
-            addShips3(field,playingField);
+            addShips3_2(field,playingField);
         } catch (ShipZone shipZone) {
             System.out.println("Размещаемый корабль не должен касаться других кораблей сторонами и углами");
-            addShips3(field,playingField);
-        }
+            addShips3_2(field,playingField);
+        }catch (NumberFormatException y){
+                    System.out.println("Координаты должны быть разделены знаками , или ;");
+                    addShips3_2(field, playingField);
+                }
     }
-    public static void addShips2(String[][] field,PlayingField playingField) {
+    public static void addShips2_1(String[][] field, PlayingField playingField) {
         Cell cell1 = Cell.SHIP_CELL;
         Cell cell2 = Cell.ZONE_SHIP_CELL;
         try {
 
             System.out.println("Введи координаты первого 2-х палубного корабля (формат x1,y1;x2,y2)");
             Scanner scanner3 = new Scanner(System.in);
-            scanner3.useDelimiter("[.,:;\"\\s–]+");
-            int x12 = scanner3.nextInt();
-            int y12 = scanner3.nextInt();
-            int x22 = scanner3.nextInt();
-            int y22 = scanner3.nextInt();
+            String string = scanner3.nextLine();
+            String[] numbersString = string.split("[,;]");
+            int[] xy = new int[4];
+            int i = 0;
+            for(String h:numbersString){
+                xy[i] = Integer.parseInt(h);
+                if (xy[i] >10 || xy[i] <1){
+                    throw new ArrayIndexOutOfBoundsException();
+                }
+                i++;
+            }
+
+            int x12 = xy[0];
+            int y12 = xy[1];
+            int x22 = xy[2];
+            int y22 = xy[3];
             if (field[x12][y12].equals(cell2.toString()) || field[x22][y22].equals(cell2.toString())) {
                 throw new ShipZone();
             }
-            Ship_2 ship_2_1 = new Ship_2(x12, y12, x22, y22, playingField);
+            Ship_2 ship_2_1 = new Ship_2(x12, y12, x22, y22, playingField,field);
             field[x12][y12] = cell1.toString();
             field[x22][y22] = cell1.toString();
             ZoneShip_2(x12, y12, x22, y22, field);
             playingField.print();
+        } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
+            System.out.println("Вы ввели некорректные координаты ");
+            addShips2_1(field, playingField);
+        } catch (ValidShip n) {
+            System.out.println("Не валидный корабль. Ячейки должны идти последовательно по вертикали или горизонтали");
+            addShips2_1(field, playingField);
+        } catch (EmptyCell s) {
+            System.out.println("Вы разместили ячейку корабля на занятой клетке ");
+            addShips2_1(field, playingField);
+        } catch (ShipZone shipZone) {
+            System.out.println("Размещаемый корабль не должен касаться других кораблей сторонами и углами");
+            addShips2_1(field, playingField);
+        }catch (NumberFormatException y){
+            System.out.println("Координаты должны быть разделены знаками , или ;");
+            addShips2_1(field, playingField);
+        }
+    }
 
+    public static void addShips2_2(String[][] field, PlayingField playingField) {
+        Cell cell1 = Cell.SHIP_CELL;
+        Cell cell2 = Cell.ZONE_SHIP_CELL;
+        try {
             System.out.println("Введи координаты второго 2-х палубного корабля (формат x1,y1;x2,y2)");
             Scanner scanner4 = new Scanner(System.in);
-            scanner4.useDelimiter("[.,:;\"\\s–]+");
-            int x121 = scanner4.nextInt();
-            int y121 = scanner4.nextInt();
-            int x221 = scanner4.nextInt();
-            int y221 = scanner4.nextInt();
+            String string = scanner4.nextLine();
+            String[] numbersString = string.split("[,;]");
+            int[] xy = new int[4];
+            int i = 0;
+            for(String h:numbersString){
+                xy[i] = Integer.parseInt(h);
+                if (xy[i] >10 || xy[i] <1){
+                    throw new ArrayIndexOutOfBoundsException();
+                }
+                i++;
+            }
+
+            int x121 = xy[0];
+            int y121 = xy[1];
+            int x221 = xy[2];
+            int y221 = xy[3];
             if (field[x121][y121].equals(cell2.toString()) || field[x221][y221].equals(cell2.toString())) {
                 throw new ShipZone();
             }
-            Ship_2 ship_2_2 = new Ship_2(x121, y121, x221, y221, playingField);
+            Ship_2 ship_2_2 = new Ship_2(x121, y121, x221, y221, playingField,field);
             field[x121][y121] = cell1.toString();
             field[x221][y221] = cell1.toString();
             ZoneShip_2(x121, y121, x221, y221, field);
             playingField.print();
+        } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
+            System.out.println("Вы ввели некорректные координаты");
+            addShips2_2(field, playingField);
+        } catch (ValidShip n) {
+            System.out.println("Не валидный корабль. Ячейки должны идти последовательно по вертикали или горизонтали");
+            addShips2_2(field, playingField);
+        } catch (EmptyCell s) {
+            System.out.println("Вы разместили ячейку корабля на занятой клетке ");
+            addShips2_2(field, playingField);
+        } catch (ShipZone shipZone) {
+            System.out.println("Размещаемый корабль не должен касаться других кораблей сторонами и углами");
+            addShips2_2(field, playingField);
+        }catch (NumberFormatException y){
+            System.out.println("Координаты должны быть разделены знаками , или ;");
+            addShips2_2(field, playingField);
+        }
+    }
 
+    public static void addShips2_3(String[][] field, PlayingField playingField) {
+        Cell cell1 = Cell.SHIP_CELL;
+        Cell cell2 = Cell.ZONE_SHIP_CELL;
+        try {
             System.out.println("Введи координаты третьего 2-х палубного корабля (формат x1,y1;x2,y2)");
             Scanner scanner5 = new Scanner(System.in);
-            scanner5.useDelimiter("[.,:;\"\\s–]+");
-            int x122 = scanner5.nextInt();
-            int y122 = scanner5.nextInt();
-            int x222 = scanner5.nextInt();
-            int y222 = scanner5.nextInt();
+            String string = scanner5.nextLine();
+            String[] numbersString = string.split("[,;]");
+            int[] xy = new int[4];
+            int i = 0;
+            for(String h:numbersString){
+                xy[i] = Integer.parseInt(h);
+                if (xy[i] >10 || xy[i] <1){
+                    throw new ArrayIndexOutOfBoundsException();
+                }
+                i++;
+            }
+
+            int x122 = xy[0];
+            int y122 = xy[1];
+            int x222 = xy[2];
+            int y222 = xy[3];
             if (field[x122][y122].equals(cell2.toString()) || field[x222][y222].equals(cell2.toString())) {
                 throw new ShipZone();
             }
-            Ship_2 ship_2_3 = new Ship_2(x122, y122, x222, y222, playingField);
+            Ship_2 ship_2_3 = new Ship_2(x122, y122, x222, y222, playingField,field);
             field[x122][y122] = cell1.toString();
             field[x222][y222] = cell1.toString();
             ZoneShip_2(x122, y122, x222, y222, field);
             playingField.print();
         } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
-            System.out.println("Вы ввели некорректные координаты ( введите числа от 1 до 10 включительно");
-            addShips2(field, playingField);
+            System.out.println("Вы ввели некорректные координаты");
+            addShips2_3(field, playingField);
         } catch (ValidShip n) {
             System.out.println("Не валидный корабль. Ячейки должны идти последовательно по вертикали или горизонтали");
-            addShips2(field, playingField);
+            addShips2_3(field, playingField);
         } catch (EmptyCell s) {
             System.out.println("Вы разместили ячейку корабля на занятой клетке ");
-            addShips2(field, playingField);
+            addShips2_3(field, playingField);
         } catch (ShipZone shipZone) {
             System.out.println("Размещаемый корабль не должен касаться других кораблей сторонами и углами");
-            addShips2(field, playingField);
+            addShips2_3(field, playingField);
+        }catch (NumberFormatException y){
+            System.out.println("Координаты должны быть разделены знаками , или ;");
+            addShips2_3(field, playingField);
         }
     }
-    public static void addShips1(String[][] field,PlayingField playingField) {
+
+    public static void addShips1_1(String[][] field, PlayingField playingField) {
         Cell cell1 = Cell.SHIP_CELL;
         Cell cell2 = Cell.ZONE_SHIP_CELL;
         try {
@@ -362,64 +515,167 @@ public class Final_task {
 
             System.out.println("Введи координаты первого однопалубного корабля (формат x1,y1)");
             Scanner scanner6 = new Scanner(System.in);
-            scanner6.useDelimiter("[.,:;\"\\s–]+");
-            int x11 = scanner6.nextInt();
-            int y11 = scanner6.nextInt();
+            String string = scanner6.nextLine();
+            String[] numbersString = string.split("[,;]");
+            int[] xy = new int[2];
+            int i = 0;
+            for(String h:numbersString){
+                xy[i] = Integer.parseInt(h);
+                if (xy[i] >10 || xy[i] <1){
+                    throw new ArrayIndexOutOfBoundsException();
+                }
+                i++;
+            }
+
+            int x11 = xy[0];
+            int y11 = xy[1];
             if (field[x11][y11].equals(cell2.toString())) {
                 throw new ShipZone();
             }
-            Ship_1 ship_1_1 = new Ship_1(x11, y11, playingField);
+            Ship_1 ship_1_1 = new Ship_1(x11, y11, playingField,field);
             field[x11][y11] = cell1.toString();
             ZoneShip_1(x11, y11, field);
             playingField.print();
-
+        } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
+            System.out.println("Вы ввели некорректные координаты ( введите числа от 1 до 10 включительно");
+            addShips1_1(field, playingField);
+        } catch (EmptyCell s) {
+            System.out.println("Вы разместили ячейку корабля на занятой клетке ");
+            addShips1_1(field, playingField);
+        } catch (ShipZone shipZone) {
+            System.out.println("Размещаемый корабль не должен касаться других кораблей сторонами и углами");
+            addShips1_1(field, playingField);
+        }catch (NumberFormatException y){
+            System.out.println("Координаты должны быть разделены знаками , или ;");
+            addShips1_1(field, playingField);
+        }
+    }
+    public static void addShips1_2(String[][] field, PlayingField playingField) {
+        Cell cell1 = Cell.SHIP_CELL;
+        Cell cell2 = Cell.ZONE_SHIP_CELL;
+        try {
             System.out.println("Введи координаты второго однопалубного корабля (формат x1,y1)");
             Scanner scanner7 = new Scanner(System.in);
-            scanner7.useDelimiter("[.,:;\"\\s–]+");
-            int x111 = scanner7.nextInt();
-            int y111 = scanner7.nextInt();
+            String string = scanner7.nextLine();
+            String[] numbersString = string.split("[,;]");
+            int[] xy = new int[2];
+            int i = 0;
+            for(String h:numbersString){
+                xy[i] = Integer.parseInt(h);
+                if (xy[i] >10 || xy[i] <1){
+                    throw new ArrayIndexOutOfBoundsException();
+                }
+                i++;
+            }
+
+            int x111 = xy[0];
+            int y111 = xy[1];
             if (field[x111][y111].equals(cell2.toString())) {
                 throw new ShipZone();
             }
-            Ship_1 ship_1_2 = new Ship_1(x111, y111, playingField);
+            Ship_1 ship_1_2 = new Ship_1(x111, y111, playingField,field);
             field[x111][y111] = cell1.toString();
             ZoneShip_1(x111, y111, field);
             playingField.print();
+        } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
+            System.out.println("Вы ввели некорректные координаты ( введите числа от 1 до 10 включительно");
+            addShips1_2(field, playingField);
 
+        } catch (EmptyCell s) {
+            System.out.println("Вы разместили ячейку корабля на занятой клетке ");
+            addShips1_2(field, playingField);
+        }catch (ShipZone shipZone) {
+            System.out.println("Размещаемый корабль не должен касаться других кораблей сторонами и углами");
+            addShips1_2(field, playingField);
+        }catch (NumberFormatException y){
+            System.out.println("Координаты должны быть разделены знаками , или ;");
+            addShips1_2(field, playingField);
+        }
+    }
+            public static void addShips1_3(String[][] field, PlayingField playingField) {
+                Cell cell1 = Cell.SHIP_CELL;
+                Cell cell2 = Cell.ZONE_SHIP_CELL;
+                try {
             System.out.println("Введи координаты третьего однопалубного корабля (формат x1,y1)");
             Scanner scanner8 = new Scanner(System.in);
-            scanner8.useDelimiter("[.,:;\"\\s–]+");
-            int x112 = scanner8.nextInt();
-            int y112 = scanner8.nextInt();
+                    String string = scanner8.nextLine();
+                    String[] numbersString = string.split("[,;]");
+                    int[] xy = new int[2];
+                    int i = 0;
+                    for(String h:numbersString){
+                        xy[i] = Integer.parseInt(h);
+                        if (xy[i] >10 || xy[i] <1){
+                            throw new ArrayIndexOutOfBoundsException();
+                        }
+                        i++;
+                    }
+
+                    int x112 = xy[0];
+                    int y112 = xy[1];
             if (field[x112][y112].equals(cell2.toString())) {
                 throw new ShipZone();
             }
-            Ship_1 ship_1_3 = new Ship_1(x112, y112, playingField);
+            Ship_1 ship_1_3 = new Ship_1(x112, y112, playingField,field);
             field[x112][y112] = cell1.toString();
             ZoneShip_1(x112, y112, field);
             playingField.print();
-
+                } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
+                    System.out.println("Вы ввели некорректные координаты ( введите числа от 1 до 10 включительно");
+                    addShips1_3(field, playingField);
+                } catch (EmptyCell s) {
+                    System.out.println("Вы разместили ячейку корабля на занятой клетке ");
+                    addShips1_3(field, playingField);
+                }catch (ShipZone shipZone) {
+                    System.out.println("Размещаемый корабль не должен касаться других кораблей сторонами и углами");
+                    addShips1_3(field, playingField);
+                }catch (NumberFormatException y){
+                    System.out.println("Координаты должны быть разделены знаками , или ;");
+                    addShips1_3(field, playingField);
+                }
+            }
+                    public static void addShips1_4(String[][] field, PlayingField playingField) {
+                        Cell cell1 = Cell.SHIP_CELL;
+                        Cell cell2 = Cell.ZONE_SHIP_CELL;
+                        try {
             System.out.println("Введи координаты четвертого однопалубного корабля (формат x1,y1)");
             Scanner scanner9 = new Scanner(System.in);
-            scanner9.useDelimiter("[.,:;\"\\s–]+");
-            int x113 = scanner9.nextInt();
-            int y113 = scanner9.nextInt();
+                            String string = scanner9.nextLine();
+                            String[] numbersString = string.split("[,;]");
+                            int[] xy = new int[2];
+                            int i = 0;
+                            for(String h:numbersString){
+                                xy[i] = Integer.parseInt(h);
+                                if (xy[i] >10 || xy[i] <1){
+                                    throw new ArrayIndexOutOfBoundsException();
+                                }
+                                i++;
+                            }
+
+                            int x113 = xy[0];
+                            int y113 = xy[1];
             if (field[x113][y113].equals(cell2.toString())) {
                 throw new ShipZone();
             }
-            Ship_1 ship_1_4 = new Ship_1(x113, y113, playingField);
+            Ship_1 ship_1_4 = new Ship_1(x113, y113, playingField,field);
             field[x113][y113] = cell1.toString();
             ZoneShip_1(x113, y113, field);
+            playingField.print();
+                        } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
+                            System.out.println("Вы ввели некорректные координаты ( введите числа от 1 до 10 включительно");
+                            addShips1_4(field, playingField);
+                        } catch (ShipZone shipZone) {
+                            System.out.println("Размещаемый корабль не должен касаться других кораблей сторонами и углами");
+                            addShips1_4(field, playingField);
+                        }  catch (EmptyCell s) {
+                            System.out.println("Вы разместили ячейку корабля на занятой клетке ");
+                            addShips1_4(field, playingField);
+                        }catch (NumberFormatException y){
+                            System.out.println("Координаты должны быть разделены знаками , или ;");
+                            addShips1_4(field, playingField);
+                        }
+                    }
 
 
-        } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
-            System.out.println("Вы ввели некорректные координаты ( введите числа от 1 до 10 включительно");
-            addShips1(field, playingField);
-        } catch (ShipZone shipZone) {
-            System.out.println("Размещаемый корабль не должен касаться других кораблей сторонами и углами");
-            addShips1(field, playingField);
-        }
-    }
 
 
 
@@ -449,14 +705,17 @@ public class Final_task {
         Cell cell1 = Cell.SHIP_CELL;
         Cell cell5 = Cell.HIT_CELL;
         try {
-            int x = scanner10.nextInt();
-            int y = scanner10.nextInt();
+            int x;
+            int y;
+            x = scanner10.nextInt();
+            y = scanner10.nextInt();
             while (field[x][y].equals(cell1.toString())) {
 
                 if (searchShipCell(field, x, y)) {
                     field[x][y] = cell3.toString();
                     fieldForAnotherPlayer[x][y] = cell3.toString();
                     ZoneShip_1(x,y,fieldForAnotherPlayer);
+
                     System.out.println("Попадание!");
                     playingFieldForAnotherPlayer.print();
                     System.out.println("Введите координаты для удара по полю соперника (формат x1,y1)");
@@ -528,23 +787,23 @@ public class Final_task {
     }
     public static void gameRun (String[][] field1,PlayingField playingField1,String[][] field2,PlayingField playingField2,String[][] fieldForPlayer1,PlayingField playingFieldForPlayer1, String[][] fieldForPlayer2,PlayingField playingFieldForPlayer2) {
 
-            while (true) {
-                if (playingFieldWithShips(field1)) {
-                    move(field2, playingField2,fieldForPlayer1,playingFieldForPlayer1);
-                }
-                if (playingFieldWithShips(field2)) {
-                    move(field1, playingField1,fieldForPlayer2,playingFieldForPlayer2);
-                }
-                if (!playingFieldWithShips(field1)) {
-                    System.out.println("Игра окончена, выиграл второй игрок");
-                    return;
-                }
-                if (!playingFieldWithShips(field2)) {
-                    System.out.println("Игра окончена, выиграл первый игрок");
-                    return;
-                }
-
+        while (true) {
+            if (playingFieldWithShips(field1)) {
+                move(field2, playingField2,fieldForPlayer1,playingFieldForPlayer1);
             }
-        }
+            if (playingFieldWithShips(field2)) {
+                move(field1, playingField1,fieldForPlayer2,playingFieldForPlayer2);
+            }
+            if (!playingFieldWithShips(field1)) {
+                System.out.println("Игра окончена, выиграл второй игрок");
+                return;
+            }
+            if (!playingFieldWithShips(field2)) {
+                System.out.println("Игра окончена, выиграл первый игрок");
+                return;
+            }
 
+        }
     }
+
+}
