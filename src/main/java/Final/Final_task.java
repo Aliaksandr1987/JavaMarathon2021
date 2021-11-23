@@ -2,9 +2,12 @@ package Final;
 
 import java.util.*;
 
-public class Final_task {
+public  class Final_task {
+     static  final int N = 11;
+
+
     public static void main(String[] args){
-        final int N = 11;
+
         String[][] field1 = new String[N][N];
         String[][] field2 = new String[N][N];
         String[][] field3 = new String[N][N];
@@ -23,15 +26,18 @@ public class Final_task {
         System.out.println("После ввода координат корабля нажмите  клавишу Enter");
         playingField1.print();
         addShips4(field1,playingField1);
-        addShips3_1(field1,playingField1);
-        addShips3_2(field1,playingField1);
+       addShips3_1(field1,playingField1);
         addShips2_1(field1,playingField1);
+
+         /*addShips3_2(field1,playingField1);
+
+
         addShips2_2(field1,playingField1);
         addShips2_3(field1,playingField1);
         addShips1_1(field1,playingField1);
         addShips1_2(field1,playingField1);
         addShips1_3(field1,playingField1);
-        addShips1_4(field1,playingField1);
+        addShips1_4(field1,playingField1);*/
 
 
         clearScreen();
@@ -41,27 +47,28 @@ public class Final_task {
         System.out.println("Игровое поле: (по горизонтали Y, по вертикали Х, координаты начинаются с единицы)");
         System.out.println("После ввода координат корабля нажмите  клавишу Enter");
         playingField2.print();
-        addShips4(field2,playingField2);
+
         addShips3_1(field2,playingField2);
-        addShips3_2(field2,playingField2);
+        /*addShips3_2(field2,playingField2);
         addShips2_1(field2,playingField2);
+         addShips4(field2,playingField2);
         addShips2_2(field2,playingField2);
         addShips2_3(field2,playingField2);
         addShips1_1(field2,playingField2);
         addShips1_2(field2,playingField2);
         addShips1_3(field2,playingField2);
-        addShips1_4(field2,playingField2);
-
+        addShips1_4(field2,playingField2);*/
 
         clearScreen();
+
 
         gameRun(field1,playingField1,field2,playingField2,field3,playingFieldForPlayer1,field4,playingFieldForPlayer2);
 
 
     }
-    public static void addPlayField(String[][] field){
+    private static void addPlayField(String[][] field){
         Cell cell = Cell.EMPTY_CELL;
-        final int N = 11;
+
         for (int e = 0; e<N;e++){
             for (int y = 0; y<N;y++){
                 field[e][y] = cell.toString();
@@ -82,10 +89,9 @@ public class Final_task {
 
 
     }
-    public static void ZoneShip_4(int x,int y, int x1, int y1,int x2,int y2,int x3, int y3,String[][] field){
+    private static void ZoneShip_4(int x,int y, int x1, int y1,int x2,int y2,int x3, int y3,String[][] field){
         Cell cell = Cell.EMPTY_CELL;
         Cell cell2 = Cell.ZONE_SHIP_CELL;
-        final int N = 11;
         ZoneShip_3(x,y,x1,y1,x2,y2,field);
         if((y3+1)<N && field[x3 - 1][y3 + 1].equals(cell.toString())){
             field[x3-1][y3+1] = cell2.toString();
@@ -113,10 +119,9 @@ public class Final_task {
         }
 
     }
-    public static void ZoneShip_3(int x,int y, int x1, int y1,int x2,int y2,String[][] field){
+    private static void ZoneShip_3(int x,int y, int x1, int y1,int x2,int y2,String[][] field){
         Cell cell = Cell.EMPTY_CELL;
         Cell cell2 = Cell.ZONE_SHIP_CELL;
-        final int N =11;
         ZoneShip_2(x,y,x1,y1,field);
         if((y2+1)<N && field[x2 - 1][y2 + 1].equals(cell.toString())){
             field[x2-1][y2+1] = cell2.toString();
@@ -144,10 +149,9 @@ public class Final_task {
         }
 
     }
-    public static void ZoneShip_2(int x,int y, int x1, int y1,String[][] field){
+    private static void ZoneShip_2(int x,int y, int x1, int y1,String[][] field){
         Cell cell = Cell.EMPTY_CELL;
         Cell cell2 = Cell.ZONE_SHIP_CELL;
-        final int N = 11;
         ZoneShip_1(x,y,field);
         if((y1+1)<N && field[x1 - 1][y1 + 1].equals(cell.toString())){
             field[x1-1][y1+1] = cell2.toString();
@@ -175,10 +179,9 @@ public class Final_task {
         }
 
     }
-    public static void ZoneShip_1(int x,int y, String[][] field){
+    private static void ZoneShip_1(int x,int y, String[][] field){
         Cell cell = Cell.EMPTY_CELL;
         Cell cell2 = Cell.ZONE_SHIP_CELL;
-        final int N = 11;
         if((y+1)<N && field[x - 1][y + 1].equals(cell.toString())){
             field[x-1][y+1] = cell2.toString();
         }
@@ -204,7 +207,7 @@ public class Final_task {
             field[x+1][y-1] = cell2.toString();
         }
     }
-    public static void addShips4(String[][] field,PlayingField playingField) {
+    private static void addShips4(String[][] field,PlayingField playingField) {
         Cell cell1 = Cell.SHIP_CELL;
 
         try {
@@ -238,6 +241,16 @@ public class Final_task {
             field[x34][y34] = cell1.toString();
             field[x44][y44] = cell1.toString();
 
+
+
+
+
+
+
+
+
+
+
             Ship_4 ship_4 = new Ship_4(x14, y14, x24, y24, x34, y34, x44, y44, playingField,field);
             ZoneShip_4(x14, y14, x24, y24, x34, y34, x44, y44, field);
             playingField.print();
@@ -258,7 +271,7 @@ public class Final_task {
 
     }
 
-    public static void addShips3_1(String[][] field, PlayingField playingField) {
+    private static void addShips3_1(String[][] field, PlayingField playingField) {
         Cell cell1 = Cell.SHIP_CELL;
         Cell cell2 = Cell.ZONE_SHIP_CELL;
         try {
@@ -286,12 +299,16 @@ public class Final_task {
             if (field[x13][y13].equals(cell2.toString()) || field[x23][y23].equals(cell2.toString()) || field[x33][y33].equals(cell2.toString())) {
                 throw new ShipZone();
             }
-            Ship_3 ship_3_1 = new Ship_3(x13, y13, x23, y23, x33, y33, playingField,field);
+            if (field[x13][y13].equals(cell1.toString()) || field[x23][y23].equals(cell1.toString()) || field[x33][y33].equals(cell1.toString())){
+                throw new EmptyCell();}
+
             field[x13][y13] = cell1.toString();
             field[x23][y23] = cell1.toString();
             field[x33][y33] = cell1.toString();
+            Ship_3 ship_3_1 = new Ship_3(x13, y13, x23, y23, x33, y33, playingField,field);
             ZoneShip_3(x13, y13, x23, y23, x33, y33, field);
             playingField.print();
+
         } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
             System.out.println("Вы ввели некорректные координаты");
             addShips3_1(field,playingField);
@@ -311,7 +328,7 @@ public class Final_task {
         }
     }
 
-            public static void addShips3_2(String[][] field, PlayingField playingField) {
+            private static void addShips3_2(String[][] field, PlayingField playingField) {
                 Cell cell1 = Cell.SHIP_CELL;
                 Cell cell2 = Cell.ZONE_SHIP_CELL;
                 try {
@@ -338,10 +355,13 @@ public class Final_task {
             if (field[x131][y131].equals(cell2.toString()) || field[x231][y231].equals(cell2.toString()) || field[x331][y331].equals(cell2.toString())) {
                 throw new ShipZone();
             }
-            Ship_3 ship_3_2 = new Ship_3(x131, y131, x231, y231, x331, y331, playingField,field);
+                    if (field[x131][y131].equals(cell1.toString()) || field[x231][y231].equals(cell1.toString()) || field[x331][y331].equals(cell1.toString())){
+                        throw new EmptyCell();}
+
             field[x131][y131] = cell1.toString();
             field[x231][y231] = cell1.toString();
             field[x331][y331] = cell1.toString();
+            Ship_3 ship_3_2 = new Ship_3(x131, y131, x231, y231, x331, y331, playingField,field);
             ZoneShip_3(x131, y131, x231, y231, x331, y331, field);
             playingField.print();
         } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
@@ -362,7 +382,7 @@ public class Final_task {
                     addShips3_2(field, playingField);
                 }
     }
-    public static void addShips2_1(String[][] field, PlayingField playingField) {
+    private static void addShips2_1(String[][] field, PlayingField playingField) {
         Cell cell1 = Cell.SHIP_CELL;
         Cell cell2 = Cell.ZONE_SHIP_CELL;
         try {
@@ -388,9 +408,14 @@ public class Final_task {
             if (field[x12][y12].equals(cell2.toString()) || field[x22][y22].equals(cell2.toString())) {
                 throw new ShipZone();
             }
-            Ship_2 ship_2_1 = new Ship_2(x12, y12, x22, y22, playingField,field);
+            if (field[x12][y12].equals(cell1.toString()) || field[x22][y22].equals(cell1.toString())){
+                throw new EmptyCell();
+            }
+
+
             field[x12][y12] = cell1.toString();
             field[x22][y22] = cell1.toString();
+            Ship_2 ship_2_1 = new Ship_2(x12, y12, x22, y22, playingField,field);
             ZoneShip_2(x12, y12, x22, y22, field);
             playingField.print();
         } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
@@ -411,7 +436,7 @@ public class Final_task {
         }
     }
 
-    public static void addShips2_2(String[][] field, PlayingField playingField) {
+    private static void addShips2_2(String[][] field, PlayingField playingField) {
         Cell cell1 = Cell.SHIP_CELL;
         Cell cell2 = Cell.ZONE_SHIP_CELL;
         try {
@@ -436,9 +461,13 @@ public class Final_task {
             if (field[x121][y121].equals(cell2.toString()) || field[x221][y221].equals(cell2.toString())) {
                 throw new ShipZone();
             }
-            Ship_2 ship_2_2 = new Ship_2(x121, y121, x221, y221, playingField,field);
+            if (field[x121][y121].equals(cell1.toString()) || field[x221][y221].equals(cell1.toString())){
+                throw new EmptyCell();
+            }
+
             field[x121][y121] = cell1.toString();
             field[x221][y221] = cell1.toString();
+            Ship_2 ship_2_2 = new Ship_2(x121, y121, x221, y221, playingField,field);
             ZoneShip_2(x121, y121, x221, y221, field);
             playingField.print();
         } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
@@ -459,7 +488,7 @@ public class Final_task {
         }
     }
 
-    public static void addShips2_3(String[][] field, PlayingField playingField) {
+    private static void addShips2_3(String[][] field, PlayingField playingField) {
         Cell cell1 = Cell.SHIP_CELL;
         Cell cell2 = Cell.ZONE_SHIP_CELL;
         try {
@@ -484,9 +513,13 @@ public class Final_task {
             if (field[x122][y122].equals(cell2.toString()) || field[x222][y222].equals(cell2.toString())) {
                 throw new ShipZone();
             }
-            Ship_2 ship_2_3 = new Ship_2(x122, y122, x222, y222, playingField,field);
+            if (field[x122][y122].equals(cell1.toString()) || field[x222][y222].equals(cell1.toString())){
+                throw new EmptyCell();
+            }
+
             field[x122][y122] = cell1.toString();
             field[x222][y222] = cell1.toString();
+            Ship_2 ship_2_3 = new Ship_2(x122, y122, x222, y222, playingField,field);
             ZoneShip_2(x122, y122, x222, y222, field);
             playingField.print();
         } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
@@ -507,7 +540,7 @@ public class Final_task {
         }
     }
 
-    public static void addShips1_1(String[][] field, PlayingField playingField) {
+    private static void addShips1_1(String[][] field, PlayingField playingField) {
         Cell cell1 = Cell.SHIP_CELL;
         Cell cell2 = Cell.ZONE_SHIP_CELL;
         try {
@@ -532,12 +565,13 @@ public class Final_task {
             if (field[x11][y11].equals(cell2.toString())) {
                 throw new ShipZone();
             }
+
             Ship_1 ship_1_1 = new Ship_1(x11, y11, playingField,field);
             field[x11][y11] = cell1.toString();
             ZoneShip_1(x11, y11, field);
             playingField.print();
         } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
-            System.out.println("Вы ввели некорректные координаты ( введите числа от 1 до 10 включительно");
+            System.out.println("Вы ввели некорректные координаты");
             addShips1_1(field, playingField);
         } catch (EmptyCell s) {
             System.out.println("Вы разместили ячейку корабля на занятой клетке ");
@@ -550,7 +584,7 @@ public class Final_task {
             addShips1_1(field, playingField);
         }
     }
-    public static void addShips1_2(String[][] field, PlayingField playingField) {
+    private static void addShips1_2(String[][] field, PlayingField playingField) {
         Cell cell1 = Cell.SHIP_CELL;
         Cell cell2 = Cell.ZONE_SHIP_CELL;
         try {
@@ -578,7 +612,7 @@ public class Final_task {
             ZoneShip_1(x111, y111, field);
             playingField.print();
         } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
-            System.out.println("Вы ввели некорректные координаты ( введите числа от 1 до 10 включительно");
+            System.out.println("Вы ввели некорректные координаты");
             addShips1_2(field, playingField);
 
         } catch (EmptyCell s) {
@@ -592,7 +626,7 @@ public class Final_task {
             addShips1_2(field, playingField);
         }
     }
-            public static void addShips1_3(String[][] field, PlayingField playingField) {
+            private static void addShips1_3(String[][] field, PlayingField playingField) {
                 Cell cell1 = Cell.SHIP_CELL;
                 Cell cell2 = Cell.ZONE_SHIP_CELL;
                 try {
@@ -620,7 +654,7 @@ public class Final_task {
             ZoneShip_1(x112, y112, field);
             playingField.print();
                 } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
-                    System.out.println("Вы ввели некорректные координаты ( введите числа от 1 до 10 включительно");
+                    System.out.println("Вы ввели некорректные координаты ");
                     addShips1_3(field, playingField);
                 } catch (EmptyCell s) {
                     System.out.println("Вы разместили ячейку корабля на занятой клетке ");
@@ -633,7 +667,7 @@ public class Final_task {
                     addShips1_3(field, playingField);
                 }
             }
-                    public static void addShips1_4(String[][] field, PlayingField playingField) {
+                    private static void addShips1_4(String[][] field, PlayingField playingField) {
                         Cell cell1 = Cell.SHIP_CELL;
                         Cell cell2 = Cell.ZONE_SHIP_CELL;
                         try {
@@ -661,7 +695,7 @@ public class Final_task {
             ZoneShip_1(x113, y113, field);
             playingField.print();
                         } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
-                            System.out.println("Вы ввели некорректные координаты ( введите числа от 1 до 10 включительно");
+                            System.out.println("Вы ввели некорректные координаты ");
                             addShips1_4(field, playingField);
                         } catch (ShipZone shipZone) {
                             System.out.println("Размещаемый корабль не должен касаться других кораблей сторонами и углами");
@@ -679,12 +713,12 @@ public class Final_task {
 
 
 
-    public static void clearScreen(){
+    private static void clearScreen(){
         for (int i =0;i<50;i++){
             System.out.println("  ");
         }
     }
-    public static void whoFirst(){
+    private static void whoFirst(){
         System.out.println("Введите ваши имена через пробел");
         Scanner scanner = new Scanner(System.in);
         scanner.useDelimiter("[,;\"\\s–]+");
@@ -696,7 +730,7 @@ public class Final_task {
         System.out.println("Игрок с именем " + names[pos] + " размещает корабли и ходит первым");
 
     }
-    public static void move(String[][] field,PlayingField playingField,String[][] fieldForAnotherPlayer, PlayingField playingFieldForAnotherPlayer) {
+    private static void move(String[][] field,PlayingField playingField,String[][] fieldForAnotherPlayer, PlayingField playingFieldForAnotherPlayer) {
 
         System.out.println("Введите координаты для удара по полю соперника (формат x1,y1)");
         Scanner scanner10 = new Scanner(System.in);
@@ -709,6 +743,7 @@ public class Final_task {
             int y;
             x = scanner10.nextInt();
             y = scanner10.nextInt();
+
             while (field[x][y].equals(cell1.toString())) {
 
                 if (searchShipCell(field, x, y)) {
@@ -725,10 +760,11 @@ public class Final_task {
 
                 }
                 else if (!searchShipCell(field, x, y)) {
-                    System.out.println("Утопил!!!");
                     field[x][y] = cell3.toString();
                     fieldForAnotherPlayer[x][y] = cell3.toString();
                     ZoneShip_1(x,y,fieldForAnotherPlayer);
+
+                    System.out.println("Утопил!!!");
                     playingFieldForAnotherPlayer.print();
                     if (playingFieldWithShips(field)) {
                         System.out.println("Введите координаты для удара по полю соперника (формат x1,y1)");
@@ -758,7 +794,7 @@ public class Final_task {
 
     }
 
-    public static boolean searchShipCell(String[][] field, int x, int y) {
+    private static boolean searchShipCell(String[][] field, int x, int y) {
         Cell cell1 = Cell.SHIP_CELL;
         final int N = 11;
 
@@ -774,10 +810,10 @@ public class Final_task {
         return (x + 1) < N && field[x + 1][y - 1].equals(cell1.toString());
     }
 
-    public static boolean playingFieldWithShips(String[][] field){
+    private static boolean playingFieldWithShips(String[][] field){
         Cell cell1 = Cell.SHIP_CELL;
-        for (int d = 0; d<11;d++){
-            for (int s = 0;s<11;s++){
+        for (int d = 0; d<N;d++){
+            for (int s = 0;s<N;s++){
                 if (field[d][s].equals(cell1.toString())){
                     return true;
                 }
@@ -785,7 +821,7 @@ public class Final_task {
         }
         return false;
     }
-    public static void gameRun (String[][] field1,PlayingField playingField1,String[][] field2,PlayingField playingField2,String[][] fieldForPlayer1,PlayingField playingFieldForPlayer1, String[][] fieldForPlayer2,PlayingField playingFieldForPlayer2) {
+    private static void gameRun (String[][] field1,PlayingField playingField1,String[][] field2,PlayingField playingField2,String[][] fieldForPlayer1,PlayingField playingFieldForPlayer1, String[][] fieldForPlayer2,PlayingField playingFieldForPlayer2) {
 
         while (true) {
             if (playingFieldWithShips(field1)) {
