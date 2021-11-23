@@ -27,17 +27,14 @@ public  class Final_task {
         playingField1.print();
         addShips4(field1,playingField1);
        addShips3_1(field1,playingField1);
+        addShips3_2(field1,playingField1);
         addShips2_1(field1,playingField1);
-
-         /*addShips3_2(field1,playingField1);
-
-
         addShips2_2(field1,playingField1);
         addShips2_3(field1,playingField1);
         addShips1_1(field1,playingField1);
         addShips1_2(field1,playingField1);
         addShips1_3(field1,playingField1);
-        addShips1_4(field1,playingField1);*/
+        addShips1_4(field1,playingField1);
 
 
         clearScreen();
@@ -47,17 +44,16 @@ public  class Final_task {
         System.out.println("Игровое поле: (по горизонтали Y, по вертикали Х, координаты начинаются с единицы)");
         System.out.println("После ввода координат корабля нажмите  клавишу Enter");
         playingField2.print();
-
+        addShips4(field2,playingField2);
         addShips3_1(field2,playingField2);
-        /*addShips3_2(field2,playingField2);
+        addShips3_2(field2,playingField2);
         addShips2_1(field2,playingField2);
-         addShips4(field2,playingField2);
         addShips2_2(field2,playingField2);
         addShips2_3(field2,playingField2);
         addShips1_1(field2,playingField2);
         addShips1_2(field2,playingField2);
         addShips1_3(field2,playingField2);
-        addShips1_4(field2,playingField2);*/
+        addShips1_4(field2,playingField2);
 
         clearScreen();
 
