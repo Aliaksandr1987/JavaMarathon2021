@@ -217,11 +217,15 @@ public  class Final_task {
             int i = 0;
             for(String h:numbersString){
                 xy[i] = Integer.parseInt(h);
-                if (xy[i] >10 || xy[i] <1){
-                    throw new ArrayIndexOutOfBoundsException();
-                }
                 i++;
             }
+
+            for (int j : xy) {
+                if (j > 10 || j < 1) {
+                    throw new ArrayIndexOutOfBoundsException();
+                }
+            }
+
 
             int x14 = xy[0];
             int y14 = xy[1];
@@ -237,21 +241,11 @@ public  class Final_task {
             field[x34][y34] = cell1.toString();
             field[x44][y44] = cell1.toString();
 
-
-
-
-
-
-
-
-
-
-
             Ship_4 ship_4 = new Ship_4(x14, y14, x24, y24, x34, y34, x44, y44, playingField,field);
             ZoneShip_4(x14, y14, x24, y24, x34, y34, x44, y44, field);
             playingField.print();
 
-        } catch (InputMismatchException | ArrayIndexOutOfBoundsException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Вы ввели некорректные координаты");
             addShips4(field, playingField);
         } catch (ValidShip n) {
@@ -280,10 +274,12 @@ public  class Final_task {
             int i = 0;
             for(String h:numbersString){
                 xy[i] = Integer.parseInt(h);
-                if (xy[i] >10 || xy[i] <1){
+                i++;
+            }
+            for (int j : xy) {
+                if (j > 10 || j < 1) {
                     throw new ArrayIndexOutOfBoundsException();
                 }
-                i++;
             }
 
             int x13 = xy[0];
@@ -305,7 +301,7 @@ public  class Final_task {
             ZoneShip_3(x13, y13, x23, y23, x33, y33, field);
             playingField.print();
 
-        } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Вы ввели некорректные координаты");
             addShips3_1(field,playingField);
 
@@ -336,10 +332,12 @@ public  class Final_task {
                     int i = 0;
                     for(String h:numbersString){
                         xy[i] = Integer.parseInt(h);
-                        if (xy[i] >10 || xy[i] <1){
+                        i++;
+                    }
+                    for (int j : xy) {
+                        if (j > 10 || j < 1) {
                             throw new ArrayIndexOutOfBoundsException();
                         }
-                        i++;
                     }
 
                     int x131 = xy[0];
@@ -360,7 +358,7 @@ public  class Final_task {
             Ship_3 ship_3_2 = new Ship_3(x131, y131, x231, y231, x331, y331, playingField,field);
             ZoneShip_3(x131, y131, x231, y231, x331, y331, field);
             playingField.print();
-        } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Вы ввели некорректные координаты");
             addShips3_2(field,playingField);
 
@@ -391,10 +389,12 @@ public  class Final_task {
             int i = 0;
             for(String h:numbersString){
                 xy[i] = Integer.parseInt(h);
-                if (xy[i] >10 || xy[i] <1){
+                i++;
+            }
+            for (int j : xy) {
+                if (j > 10 || j < 1) {
                     throw new ArrayIndexOutOfBoundsException();
                 }
-                i++;
             }
 
             int x12 = xy[0];
@@ -414,7 +414,7 @@ public  class Final_task {
             Ship_2 ship_2_1 = new Ship_2(x12, y12, x22, y22, playingField,field);
             ZoneShip_2(x12, y12, x22, y22, field);
             playingField.print();
-        } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Вы ввели некорректные координаты ");
             addShips2_1(field, playingField);
         } catch (ValidShip n) {
@@ -444,10 +444,12 @@ public  class Final_task {
             int i = 0;
             for(String h:numbersString){
                 xy[i] = Integer.parseInt(h);
-                if (xy[i] >10 || xy[i] <1){
+                i++;
+            }
+            for (int j : xy) {
+                if (j > 10 || j < 1) {
                     throw new ArrayIndexOutOfBoundsException();
                 }
-                i++;
             }
 
             int x121 = xy[0];
@@ -466,7 +468,7 @@ public  class Final_task {
             Ship_2 ship_2_2 = new Ship_2(x121, y121, x221, y221, playingField,field);
             ZoneShip_2(x121, y121, x221, y221, field);
             playingField.print();
-        } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Вы ввели некорректные координаты");
             addShips2_2(field, playingField);
         } catch (ValidShip n) {
@@ -496,10 +498,12 @@ public  class Final_task {
             int i = 0;
             for(String h:numbersString){
                 xy[i] = Integer.parseInt(h);
-                if (xy[i] >10 || xy[i] <1){
+                i++;
+            }
+            for (int j : xy) {
+                if (j > 10 || j < 1) {
                     throw new ArrayIndexOutOfBoundsException();
                 }
-                i++;
             }
 
             int x122 = xy[0];
@@ -518,7 +522,7 @@ public  class Final_task {
             Ship_2 ship_2_3 = new Ship_2(x122, y122, x222, y222, playingField,field);
             ZoneShip_2(x122, y122, x222, y222, field);
             playingField.print();
-        } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Вы ввели некорректные координаты");
             addShips2_3(field, playingField);
         } catch (ValidShip n) {
@@ -550,10 +554,12 @@ public  class Final_task {
             int i = 0;
             for(String h:numbersString){
                 xy[i] = Integer.parseInt(h);
-                if (xy[i] >10 || xy[i] <1){
+                i++;
+            }
+            for (int j : xy) {
+                if (j > 10 || j < 1) {
                     throw new ArrayIndexOutOfBoundsException();
                 }
-                i++;
             }
 
             int x11 = xy[0];
@@ -566,7 +572,7 @@ public  class Final_task {
             field[x11][y11] = cell1.toString();
             ZoneShip_1(x11, y11, field);
             playingField.print();
-        } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Вы ввели некорректные координаты");
             addShips1_1(field, playingField);
         } catch (EmptyCell s) {
@@ -592,10 +598,12 @@ public  class Final_task {
             int i = 0;
             for(String h:numbersString){
                 xy[i] = Integer.parseInt(h);
-                if (xy[i] >10 || xy[i] <1){
+                i++;
+            }
+            for (int j : xy) {
+                if (j > 10 || j < 1) {
                     throw new ArrayIndexOutOfBoundsException();
                 }
-                i++;
             }
 
             int x111 = xy[0];
@@ -607,7 +615,7 @@ public  class Final_task {
             field[x111][y111] = cell1.toString();
             ZoneShip_1(x111, y111, field);
             playingField.print();
-        } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
+        } catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("Вы ввели некорректные координаты");
             addShips1_2(field, playingField);
 
@@ -634,10 +642,12 @@ public  class Final_task {
                     int i = 0;
                     for(String h:numbersString){
                         xy[i] = Integer.parseInt(h);
-                        if (xy[i] >10 || xy[i] <1){
+                        i++;
+                    }
+                    for (int j : xy) {
+                        if (j > 10 || j < 1) {
                             throw new ArrayIndexOutOfBoundsException();
                         }
-                        i++;
                     }
 
                     int x112 = xy[0];
@@ -649,7 +659,7 @@ public  class Final_task {
             field[x112][y112] = cell1.toString();
             ZoneShip_1(x112, y112, field);
             playingField.print();
-                } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
+                } catch (ArrayIndexOutOfBoundsException e) {
                     System.out.println("Вы ввели некорректные координаты ");
                     addShips1_3(field, playingField);
                 } catch (EmptyCell s) {
@@ -675,10 +685,12 @@ public  class Final_task {
                             int i = 0;
                             for(String h:numbersString){
                                 xy[i] = Integer.parseInt(h);
-                                if (xy[i] >10 || xy[i] <1){
+                                i++;
+                            }
+                            for (int j : xy) {
+                                if (j > 10 || j < 1) {
                                     throw new ArrayIndexOutOfBoundsException();
                                 }
-                                i++;
                             }
 
                             int x113 = xy[0];
@@ -690,7 +702,7 @@ public  class Final_task {
             field[x113][y113] = cell1.toString();
             ZoneShip_1(x113, y113, field);
             playingField.print();
-                        } catch (ArrayIndexOutOfBoundsException | InputMismatchException e) {
+                        } catch (ArrayIndexOutOfBoundsException e) {
                             System.out.println("Вы ввели некорректные координаты ");
                             addShips1_4(field, playingField);
                         } catch (ShipZone shipZone) {
@@ -727,7 +739,6 @@ public  class Final_task {
 
     }
     private static void move(String[][] field,PlayingField playingField,String[][] fieldForAnotherPlayer, PlayingField playingFieldForAnotherPlayer) {
-
         System.out.println("Введите координаты для удара по полю соперника (формат x1,y1)");
         Scanner scanner10 = new Scanner(System.in);
         scanner10.useDelimiter("[,;\"\\s–]+");
@@ -739,57 +750,51 @@ public  class Final_task {
             int y;
             x = scanner10.nextInt();
             y = scanner10.nextInt();
-
+            if(x>11 || x<1 || y>11 || y<1){
+                throw new ArrayIndexOutOfBoundsException();
+            }
             while (field[x][y].equals(cell1.toString())) {
-
                 if (searchShipCell(field, x, y)) {
                     field[x][y] = cell3.toString();
                     fieldForAnotherPlayer[x][y] = cell3.toString();
                     ZoneShip_1(x,y,fieldForAnotherPlayer);
-
                     System.out.println("Попадание!");
                     playingFieldForAnotherPlayer.print();
                     System.out.println("Введите координаты для удара по полю соперника (формат x1,y1)");
                     x = scanner10.nextInt();
                     y = scanner10.nextInt();
-
-
+                    if(x>11 || x<1 || y>11 || y<1){
+                        throw new ArrayIndexOutOfBoundsException();
+                    }
                 }
                 else if (!searchShipCell(field, x, y)) {
                     field[x][y] = cell3.toString();
                     fieldForAnotherPlayer[x][y] = cell3.toString();
                     ZoneShip_1(x,y,fieldForAnotherPlayer);
-
                     System.out.println("Утопил!!!");
                     playingFieldForAnotherPlayer.print();
                     if (playingFieldWithShips(field)) {
                         System.out.println("Введите координаты для удара по полю соперника (формат x1,y1)");
                         x = scanner10.nextInt();
                         y = scanner10.nextInt();
+                        if(x>11 || x<1 || y>11 || y<1){
+                            throw new ArrayIndexOutOfBoundsException();
+                        }
                     } else return;
                 } else return;
-
-
             }
             if (!field[x][y].equals(cell1.toString()) && playingFieldWithShips(field)) {
                 fieldForAnotherPlayer[x][y] = cell5.toString();
                 playingFieldForAnotherPlayer.print();
                 System.out.println("Мимо, ход переходит следующему игроку");
+            }
 
-            }
-            if(x>11 || x<1 || y>11 || y<1){
-                throw new ArrayIndexOutOfBoundsException();
-            }
         }
         catch (ArrayIndexOutOfBoundsException | InputMismatchException e){
             System.out.println("Вы ввели некорректные координаты");
             move(field,playingField,fieldForAnotherPlayer,playingFieldForAnotherPlayer);
         }
-
-
-
     }
-
     private static boolean searchShipCell(String[][] field, int x, int y) {
         Cell cell1 = Cell.SHIP_CELL;
         final int N = 11;

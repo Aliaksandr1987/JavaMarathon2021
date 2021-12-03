@@ -54,7 +54,7 @@ class Ship_1 extends Ship {
 
     public Ship_1(int x1, int y1,PlayingField playingField,String[][] field) throws EmptyCell {
         super(x1, y1,playingField);
-        if (!field[x1][y1].equals(cell1.toString())){
+        if (field[x1][y1].equals(cell1.toString())){
 
             throw new EmptyCell();
         }
